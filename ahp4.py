@@ -390,7 +390,7 @@ with tab3:
     active_scores = {crit: state_scores[crit] for crit in st.session_state.criteria}
     
     matrix_df = pd.DataFrame(active_scores, index=st.session_state.alternatives)
-    st.dataframe(matrix_df.style.background_gradient(cmap="Blues"), use_container_width=True)
+    st.dataframe(matrix_df)
     st.caption("📈 *Scale Configuration: 1 = Marginal Performance Match | 5 = Strong Core Alignment | 9 = Absolute Dominance Factor*")
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -452,6 +452,6 @@ with tab4:
             st.divider()
             
         with st.expander("View Full Detailed Score Table"):
-            st.dataframe(results_df.style.background_gradient(cmap='Greens').format("{:.2f}%", subset=["Synthesis Score Profile"]), use_container_width=True)
+            st.dataframe(matrix_df)
             
     st.markdown('</div>', unsafe_allow_html=True)
