@@ -458,6 +458,6 @@ with tab4:
             st.divider()
             
         with st.expander("View Full Detailed Score Table"):
-            st.dataframe(matrix_df)
+            st.dataframe(results_df)
             
     st.markdown('</div>', unsafe_allow_html=True)
