@@ -351,6 +351,8 @@ with tab2:
                     criteria_matrix[i,j], criteria_matrix[j,i] = 1/value, value
                     
         criteria_weights, crit_cr = calculate_ahp_weights_and_cr(criteria_matrix)
+        st.session_state["criteria_weights"] = criteria_weights
+        st.session_state["crit_cr"] = crit_cr
 
       # --- NEW ADDITION: Pairwise Comparison Value Table ---
         st.subheader("Generated Pairwise Matrix")
@@ -412,6 +414,10 @@ with tab4:
             alt_weights_matrix[:, c_idx] = normalized_weights
             
         # Linear aggregation via dot product matrix multiplication
+        if "criteria_weights" not in st.session_state:
+            st.error("Please complete Criteria Assessment (Tab 2) first.")
+            st.stop()
+        criteria_weights = st.session_state["criteria_weights"]
         final_scores = np.dot(alt_weights_matrix, criteria_weights)
         
         results_df = pd.DataFrame({
