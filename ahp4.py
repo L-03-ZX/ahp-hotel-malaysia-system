@@ -362,10 +362,7 @@ with tab2:
             columns=criteria
         )
         # Displaying the matrix with 4 decimal places for reciprocals (e.g., 0.3333)
-        st.dataframe(
-            matrix_df.style.format("{:.4f}").background_gradient(cmap="Blues"), 
-            use_container_width=True
-        )
+            st.dataframe(matrix_df)
         st.caption(f"📊 **Consistency Ratio (CR):** {crit_cr:.4f} (Must be < 0.10 for mathematical validity)")
         st.divider()
 
